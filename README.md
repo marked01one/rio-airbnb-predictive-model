@@ -3,7 +3,7 @@
 This repository contains Jupyter Python notebooks belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
 For more information about the program and its associated projects: [Research through Inclusive Opportunities](https://www.cpp.edu/our-cpp/students/rio/index.shtml)
 
-The repository is specifically created to support the Airbnb predictive modeling project from the Computer Information Systems department. 
+The repository is specifically created to support the Airbnb predictive modeling project from Dr. Sonya Zhang and the Computer Information Systems department. 
 For more information on this particular project: [2022-23 Research Projects](https://www.cpp.edu/our-cpp/students/rio/projects.shtml) 
 
 <h2 align="center">Getting Started</h2>
@@ -23,8 +23,8 @@ pandas
 numpy
 scipy
 matplotlib
-statistics
 jupyter
+geopy
 ```
 To install these Python libraries, use `pip install` in the terminal, i.e.:
 ```

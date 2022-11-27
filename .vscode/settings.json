@@ -1,5 +1,7 @@
 {
     "cSpell.words": [
-        "iterrows"
+        "geolocator",
+        "iterrows",
+        "Nominatim"
     ]
 }
