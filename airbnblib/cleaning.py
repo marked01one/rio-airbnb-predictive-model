@@ -1,5 +1,9 @@
+from geopy.geocoders import Nominatim
 import pandas as pd
 import re
+import time
+
+geolocator = Nominatim(user_agent="rio_airbnb_predictive_model")
 
 def bath_clean(string: str) -> dict:
     """Convert strings from `bathrooms_text` to counts and type   
@@ -73,6 +77,15 @@ def amenities_freq(df_col: pd.DataFrame) -> pd.DataFrame:
                 row.remove(item)
     return df_col
 
-def get_zip_code(lat_col: str, long_col: str) -> int:
-    
-    pass
+def get_zip_code(lat: float, long: float) -> int:
+    location = geolocator.reverse(f"{lat}, {long}").address
+    zip_code = re.findall("[0-9]{5}", location)
+    try:
+        return int(zip_code[-1])
+    except IndexError:
+        return 0
+
+# start = time.time()
+# print(get_zip_code(34.05850916089787, -117.82175768471335))
+# end = time.time()
+# print(f"Runtime: {round(1000*(end - start))}ms")
