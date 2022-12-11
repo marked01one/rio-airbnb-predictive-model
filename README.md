@@ -35,5 +35,9 @@ C:\Users> pip install pandas
 
 <h2 align="center">Notebooks</h2>
 
-### `rough_clean.ipynb`
-* This notebook is specifically for making broad strokes to clean and refine the data. For more involved data refining processes such as sentimental analysis, future notebooks will be created specifically for those purposes 
+### `rough_clean`
+* Notebook for making broad strokes to clean and refine the data. 
+* For more involved data refining processes such as sentimental analysis, future notebooks will be created specifically for those purposes 
+
+### `exploratory_analysis`
+* Notebook for doing exploratory data analysis into the data, which will be used to determine which variables to delete, edit, etc.

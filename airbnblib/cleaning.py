@@ -1,7 +1,7 @@
+ # THIS LIBRARY IS MANDATORY FOR THE NOTEBOOKS TO FUNCTION
 from geopy.geocoders import Nominatim
 import pandas as pd
 import re
-import time
 
 geolocator = Nominatim(user_agent="rio_airbnb_predictive_model")
 
@@ -22,7 +22,7 @@ def bath_clean(string: str) -> dict:
     
     if 'half-' in bath_type:
         bath_type = bath_type.replace('half-', '')
-        num += 0.5
+        num = num / 2
 
     if bath_type == "bath":
         bath_type = "private bath"
@@ -32,13 +32,21 @@ def bath_clean(string: str) -> dict:
         "bathroom_type": bath_type,
     }
 
+def all_amenities(df_col: pd.DataFrame) -> list[str]:
+    out = []
+    for list in df_col.to_list():
+        for item in list:
+            if item not in out:
+                out.append(item)
+    return out
+
 def amenities_clean(string: str) -> list[str]:
     """Converts the input string into list objects
         ### Input Parameters:
             `string (str)`: the string we want to convert
         ### Returns:
             `list_str (list[str])`: return a list converted from input string 
-        """
+    """
     amenities_check = [['TV'], ['Free','Parking'], ['Grill'], ['WiFi']]
     list_str = string.lstrip('["').rstrip('"]').split('", "')
     new_list = [
@@ -56,27 +64,6 @@ def amenities_clean(string: str) -> list[str]:
                 break    
     return new_list
 
-def amenities_freq(df_col: pd.DataFrame) -> pd.DataFrame:
-    """Remove all values from every amenities list that is appears in less than 50% of listings
-    ### Input Parameters:
-        `df_col (pd.DataFrame)`: Input amenities DataFrame column
-    ### Returns:
-        `pd.DataFrame`: Output amenities DataFrame column
-    """
-    amenities_num = {"sum": 0}
-    for row in df_col:
-        for item in row:
-            if item not in amenities_num:
-                amenities_num[item] = 0
-            amenities_num[item] += 1
-    for row in df_col:
-        for item in row:
-            # Initial dataset contains 45,802 total listings 
-            # --> any amenities that appears in less than 22,910 will be removed  
-            if amenities_num[item] < 22901:
-                row.remove(item)
-    return df_col
-
 def get_zip_code(lat: float, long: float) -> int:
     location = geolocator.reverse(f"{lat}, {long}").address
     zip_code = re.findall("[0-9]{5}", location)
@@ -84,8 +71,3 @@ def get_zip_code(lat: float, long: float) -> int:
         return int(zip_code[-1])
     except IndexError:
         return 0
-
-# start = time.time()
-# print(get_zip_code(34.05850916089787, -117.82175768471335))
-# end = time.time()
-# print(f"Runtime: {round(1000*(end - start))}ms")
