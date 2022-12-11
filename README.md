@@ -18,10 +18,10 @@ Since the `listings.csv` was too large to be directly published to GitHub, it ha
 
 **CAUTION:** The `airbnblib` folder is meant to house custom-made functions used in the notebooks. Remember to include the `airbnblib` folder in the same directory as your notebooks, or else many functionalities would not work.
 
-<h2 align="center">Current Dependencies</h2>
+<h2 align="center">Dependencies</h2>
 <details>
-    <summary>List of current dependencies</summary>
-<hr>
+    <summary><strong>List of current dependencies</strong></summary>
+<br>
    
 ```
 pandas
