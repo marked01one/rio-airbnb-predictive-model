@@ -1,4 +1,4 @@
-<h1 align="center">Airbnb Predictive Model</h1>
+# Airbnb Predictive Model
 
 This repository contains Jupyter Python notebooks belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
 For more information about the program and its associated projects: [Research through Inclusive Opportunities](https://www.cpp.edu/our-cpp/students/rio/index.shtml)
@@ -6,7 +6,7 @@ For more information about the program and its associated projects: [Research th
 The repository is specifically created to support the Airbnb predictive modeling project from Dr. Sonya Zhang and the Computer Information Systems department. 
 For more information on this particular project: [2022-23 Research Projects](https://www.cpp.edu/our-cpp/students/rio/projects.shtml) 
 
-<h2 align="center">Getting Started</h2>
+## Getting Started
 
 The Jupyter Notebook `.ipynb` files can be opened using either [Google Colaboratory](https://colab.research.google.com) or locally using [Visual Studio Code](https://code.visualstudio.com) and 3-rd party extensions.
 
@@ -18,7 +18,7 @@ Since the `listings.csv` was too large to be directly published to GitHub, it ha
 
 **CAUTION:** The `airbnblib` folder is meant to house custom-made functions used in the notebooks. Remember to include the `airbnblib` folder in the same directory as your notebooks, or else many functionalities would not work.
 
-<h2 align="center">Dependencies</h2>
+## Dependencies
 <details>
     <summary><strong>List of current dependencies</strong></summary>
 <br>
@@ -40,7 +40,7 @@ To install these Python libraries, use `pip install` in the terminal, i.e.:
 C:\Users> pip install pandas
 ```
 
-<h2 align="center">Notebooks</h2>
+## Notebooks
 
 ### `rough_clean`
 * Notebook for making broad strokes to clean and refine the data. 
