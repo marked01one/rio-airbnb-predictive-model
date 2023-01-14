@@ -1,3 +1,4 @@
 # ignore all dataset files since they are too large for Github publishing
 # use the `dataset.zip` file instead 
 **/dataset
+/scripts
