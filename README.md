@@ -19,25 +19,11 @@ Since the `listings.csv` was too large to be directly published to GitHub, it ha
 **CAUTION:** The `airbnblib` folder is meant to house custom-made functions used in the notebooks. Remember to include the `airbnblib` folder in the same directory as your notebooks, or else many functionalities would not work.
 
 ## Dependencies
-<details>
-    <summary><strong>List of current dependencies</strong></summary>
-<br>
-   
-```
-pandas
-numpy
-scipy
-matplotlib
-seaborn
-jupyter
-geopy
-sklearn
-```
-</details>
+All required dependencies are now listed in the `requirements.txt` file
 
-To install these Python libraries, use `pip install` in the terminal, i.e.:
+To install these Python libraries, use `pip install -r requirements.txt` in the root directory of the project, i.e.:
 ```
-C:\Users> pip install pandas
+C:\...\rio-airbnb-predictive-model> pip install -r requirements
 ```
 
 ## Notebooks

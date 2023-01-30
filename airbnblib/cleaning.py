@@ -1,4 +1,4 @@
- # THIS LIBRARY IS MANDATORY FOR THE NOTEBOOKS TO FUNCTION
+# THIS LIBRARY IS MANDATORY FOR THE NOTEBOOKS TO FUNCTION
 from geopy.geocoders import Nominatim
 import pandas as pd
 import re
@@ -65,7 +65,7 @@ def amenities_clean(string: str) -> list[str]:
     return new_list
 
 def get_zip_code(lat: float, long: float) -> int:
-    location = geolocator.reverse(f"{lat}, {long}").address
+    location = geolocator.reverse(f"{lat}, {long}").address # type: ignore
     zip_code = re.findall("[0-9]{5}", location)
     try:
         return int(zip_code[-1])

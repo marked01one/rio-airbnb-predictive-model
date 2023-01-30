@@ -2,3 +2,4 @@
 # use the `dataset.zip` file instead 
 **/dataset
 /scripts
+/.venv
