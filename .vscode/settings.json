@@ -1,8 +1,9 @@
 {
     "cSpell.words": [
-        "airbnblib",
-        "geolocator",
-        "iterrows",
-        "Nominatim"
+      "airbnblib",
+      "crossorigin",
+      "geolocator",
+      "iterrows",
+      "Nominatim"
     ]
 }

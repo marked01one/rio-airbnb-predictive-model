@@ -23,7 +23,7 @@ All required dependencies are now listed in the `requirements.txt` file
 
 To install these Python libraries, use `pip install -r requirements.txt` in the root directory of the project, i.e.:
 ```
-C:\...\rio-airbnb-predictive-model> pip install -r requirements
+C:\...\rio-airbnb-predictive-model> pip install -r requirements.txt
 ```
 
 ## Notebooks
