@@ -1,8 +1,9 @@
-import imp
 from dash import Dash, html, dcc
+import dash
 import plotly.express as px
 import pandas as pd 
 
+# Import stylesheets
 stylesheets = [
   {
     'href': 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css',
@@ -12,65 +13,47 @@ stylesheets = [
   }
 ]
 
+# Initialize app
 app = Dash(
   __name__,
-  external_stylesheets=stylesheets
+  external_stylesheets=stylesheets,
+  use_pages=True
 )
 
-df = pd.DataFrame({
-  "Fruit": ["Apples", "Oranges", "Bananas"],
-  "Amount": [4,1,2],
-  "City": ['San Francisco', 'Montreal', 'New York']
-})
+# Generate the app layout
+app.layout = html.Div(
+  className="row",
+  style={
+    'fontFamily': 'monospace'
+  },
+  children=[
+    
+    # Sidebar HTML, containing route links and project title
+    html.Div(
+      className="col-lg-2 bg-black text-white py-4 px-2 text-center",
+      children=[
+      html.H4('Airbnb Predictive Model'),
+      html.P('by Minh Khoi Tran', style={'fontStyle': 'italic'}),
+      html.Div([
+        html.Div([
+          dcc.Link(
+            f"{page['name']}", 
+            href=page['relative_path'],
+            className=f"btn btn-success d-flex my-2"
+          )
+          for page in dash.page_registry.values()
+        ],
+        className='container')
+      ])
+    ]),
+    html.Div(
+      className="col-lg-10 text-center",
+      children=dash.page_container
+    )
+  ]
+)
 
-fig = px.bar(df, x="Fruit", y="Amount")
 
-app.layout = html.Div(children=[
-  html.H1(
-    children='Airbnb Predictive Model - Literature Analysis',
-    style={
-      "textAlign": "center",
-      'color': 'blue'
-    }
-  ),
-  
-  # Subtitle text
-  html.Div(
-    children=[
-      "For more info on this project, check out the ",
-      html.A(
-        children='Project GitHub',
-        href='https://github.com/marked01one/rio-airbnb-predictive-model'
-      )
-    ], 
-    style={"textAlign": "center"}
-  ),
-  
-  # Graphs
-  html.Div(
-    className='my-2 mx-5 row border border-danger',
-    children=[
-      dcc.Graph(
-        id='example-graph1',
-        figure=fig,
-        className="col-12 col-lg-6"
-      ),
-      dcc.Graph(
-        id='example-graph2',
-        figure=fig,
-        className="col-12 col-lg-6"
-      )
-    ]
-  ),
-  
-  html.P(
-    children="This application is build to serve my research project in predictive modeling",
-    style={
-      'textAlign': "center",
-      "fontStyle": "italic"
-    }
-  )
-])
 
 if __name__ == '__main__':
   app.run_server(debug=True)
