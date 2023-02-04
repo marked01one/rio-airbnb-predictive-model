@@ -1,7 +1,8 @@
 from dash import Dash, html, dcc
 import dash
 import plotly.express as px
-import pandas as pd 
+import pandas as pd
+from components import footer, sidebar
 
 # Import stylesheets
 stylesheets = [
@@ -29,26 +30,27 @@ app.layout = html.Div(
   children=[
     
     # Sidebar HTML, containing route links and project title
+    sidebar.Sidebar(
+      className="col-md-2 bg-black text-white py-4 px-2 text-center",
+      title='Airbnb Predictive Model',
+      credits='by Minh Khoi Tran'
+    ).create(),
+    
+    # Main content container
     html.Div(
-      className="col-lg-2 bg-black text-white py-4 px-2 text-center",
+      className="col-md-10 text-center",
       children=[
-      html.H4('Airbnb Predictive Model'),
-      html.P('by Minh Khoi Tran', style={'fontStyle': 'italic'}),
-      html.Div([
-        html.Div([
-          dcc.Link(
-            f"{page['name']}", 
-            href=page['relative_path'],
-            className=f"btn btn-success d-flex my-2"
-          )
-          for page in dash.page_registry.values()
-        ],
-        className='container')
-      ])
-    ]),
-    html.Div(
-      className="col-lg-10 text-center",
-      children=dash.page_container
+        dash.page_container,
+        footer.Footer(
+          statement="""
+            This web portal is created to support the predictive modeling project initiated by Dr. Sonya Zhang from the 
+            Computer Information Systems department of the California Polytechnic State University, Pomona
+          """,
+          hyperlink_text='For more info on the project, click on this link',
+          github_link='https://github.com/marked01one/rio-airbnb-predictive-model#-web-portals-',
+          className="container mb-4"
+        ).create()
+      ]
     )
   ]
 )

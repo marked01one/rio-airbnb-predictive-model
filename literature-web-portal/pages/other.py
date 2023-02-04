@@ -9,7 +9,7 @@ layout = html.Div(
   children=[
     html.H1(children='Other Visualizations'),
     html.Div(children='''
-        Literature Analysis Web Portal
+        Other visualizations of our literature analysis
     '''),
-
-])
+  ]
+)
