@@ -44,7 +44,7 @@ app.layout = html.Div(
         footer.Footer(
           statement="""
             This web portal is created to support the predictive modeling project initiated by Dr. Sonya Zhang from the 
-            Computer Information Systems department of the California Polytechnic State University, Pomona
+            Computer Information Systems department of California Polytechnic State University, Pomona
           """,
           hyperlink_text='For more info on the project, click on this link',
           github_link='https://github.com/marked01one/rio-airbnb-predictive-model#-web-portals-',

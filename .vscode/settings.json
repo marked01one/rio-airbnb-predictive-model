@@ -4,6 +4,7 @@
       "crossorigin",
       "geolocator",
       "iterrows",
-      "Nominatim"
+      "Nominatim",
+      "yaxes"
     ]
 }

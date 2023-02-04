@@ -3,15 +3,17 @@ import dash
 
 
 class Sidebar:
-  def __init__(self, title: str, credits: str, className: str = None) -> None:
+  def __init__(self, title: str, credits: str, className: str = None, style: dict = None) -> None:
     self.title = title
     self.credits = credits
     self.className = className
+    self.style = style
     
   
   def create(self):
     return \
       html.Div(
+        style=self.style,
         className=self.className,
         children=[
           html.H4(self.title),

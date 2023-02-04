@@ -1,6 +1,6 @@
 <h1 align='center'> Airbnb Predictive Model </h1>
 
-This repository contains Jupyter Python notebooks belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
+This repository contains Jupyter Python and Python code belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
 For more information about the program and its associated projects: [Research through Inclusive Opportunities](https://www.cpp.edu/our-cpp/students/rio/index.shtml)
 
 The repository is specifically created to support the Airbnb predictive modeling project from Dr. Sonya Zhang and the Computer Information Systems department. 
