@@ -5,6 +5,8 @@
       "geolocator",
       "iterrows",
       "Nominatim",
+      "titlefont",
+      "xaxes",
       "yaxes"
     ]
 }

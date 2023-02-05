@@ -1,11 +1,10 @@
 import dash
 from dash import html, dcc
-from components import graphs
-from components import footer
 import plotly.express as px
 import pandas as pd
+from constants import AXIS_FONT, TITLE_FONT
 
-dash.register_page(__name__, path='/')
+dash.register_page(__name__, path='/literature')
 
 
 df = pd.read_csv('./figures/lit_overview_frequency.csv')
@@ -23,11 +22,9 @@ fig_features = px.bar(df_features, x="Total", y="Index", color='Subcategory', or
                         'Subcategory': 'Category'
                       },
                       height=1500, title='Most popular features (descending order)')
-fig_features.update_layout(
-  title_font_size=32,
-  title_font_family='monospace',
-)
-fig_features.update_yaxes(categoryorder='total ascending')
+fig_features.update_layout(title_font=TITLE_FONT)
+fig_features.update_yaxes(categoryorder='total ascending', titlefont=AXIS_FONT)
+fig_features.update_xaxes(titlefont=AXIS_FONT)
 
 
 
@@ -41,11 +38,9 @@ fig_models = px.bar(df_models, x="Total", y="Index", color='Subcategory', orient
                         'Subcategory': 'Category'
                       },
                       height=800, title='Most popular models (descending order)')
-fig_models.update_layout(
-  title_font_size=32,
-  title_font_family='monospace',
-)
-fig_models.update_yaxes(categoryorder='total ascending')
+fig_models.update_layout(title_font=TITLE_FONT)
+fig_models.update_yaxes(categoryorder='total ascending', titlefont=AXIS_FONT)
+fig_models.update_xaxes(titlefont=AXIS_FONT)
 
 
 
@@ -58,12 +53,10 @@ fig_mining = px.bar(df_mining, x="Total", y="Index", color='Subcategory', orient
                         'Total': f'Number of articles (out of {num_of_articles})',
                         'Subcategory': 'Category'
                       },
-                      height=800, title='Most popular data mining libraries/algorithms (descending order)')
-fig_mining.update_layout(
-  title_font_size=32,
-  title_font_family='monospace',
-)
-fig_mining.update_yaxes(categoryorder='total ascending')
+                      height=600, title='Most popular data mining libraries/algorithms (descending order)')
+fig_mining.update_layout(title_font=TITLE_FONT)
+fig_mining.update_yaxes(categoryorder='total ascending', titlefont=AXIS_FONT)
+fig_mining.update_xaxes(titlefont=AXIS_FONT)
 
 
 

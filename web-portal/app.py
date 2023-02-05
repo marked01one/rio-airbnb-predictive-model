@@ -1,7 +1,5 @@
 from dash import Dash, html, dcc
 import dash
-import plotly.express as px
-import pandas as pd
 from components import footer, sidebar
 
 # Import stylesheets
@@ -31,14 +29,14 @@ app.layout = html.Div(
     
     # Sidebar HTML, containing route links and project title
     sidebar.Sidebar(
-      className="col-md-2 bg-black text-white py-4 px-2 text-center",
+      className="col-12 col-lg-2 bg-black text-white py-4",
       title='Airbnb Predictive Model',
       credits='by Minh Khoi Tran'
     ).create(),
     
     # Main content container
     html.Div(
-      className="col-md-10 text-center",
+      className="col-12 col-lg-10 text-center main-body",
       children=[
         dash.page_container,
         footer.Footer(

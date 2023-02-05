@@ -1,0 +1,31 @@
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.literature-content a, .dataset-content a {
+  display: block;
+  padding: 2px;
+  padding-left: 12px;
+  color: #FFF;
+  text-decoration: none;
+}
+.literature-content a:hover, .dataset-content a:hover {
+  color: #000000;
+  background-color: gray;
+}
+
+.welcome-page {
+  margin-top: 28%;
+  margin-bottom: 24.1%;
+}
+
+.main-body {
+  animation: fadeInAnimation ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
