@@ -8,3 +8,11 @@ TITLE_FONT = {
   'family': 'monospace',
   'color': '#1c4587'
 }
+
+MODEL_CAT = ['Regression', 'Classification', 'Clustering']
+
+SECTION_FONT = {
+  'color': '#1c4587', 
+  'marginTop': '24px', 
+  'fontStyle': 'italic'
+}

@@ -9,19 +9,21 @@ class Footer:
     self.github_link = github_link
     self.hyperlink_text = hyperlink_text
     self.className = className
+    self.styles = {
+      "textAlign": "center",
+      "fontStyle": "italic"
+    }
     
   def create(self):
     return \
       html.Div(
-        className=self.className,
+        className=self.className, 
+        style=self.styles,
         children=[
-          html.P(self.statement, style={
-            "textAlign": "center",
-            "fontStyle": "italic"
-          }),
+          html.P(self.statement),
           html.A(
             href=self.github_link,
-            children=self.hyperlink_text
+            children=self.hyperlink_text,
           )
         ]
       )
