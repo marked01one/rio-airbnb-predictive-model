@@ -1,5 +1,6 @@
 from layout import make_layout
 import dash
+import pandas as pd 
 
 
 # Import stylesheets
@@ -18,6 +19,7 @@ app = dash.Dash(
   external_stylesheets=stylesheets,
   use_pages=True
 )
+
 
 # Run server
 if __name__ == '__main__':

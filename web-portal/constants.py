@@ -1,3 +1,5 @@
+
+
 AXIS_FONT = {
   'size': 18, 
   'color': '#1c4587'
@@ -9,7 +11,9 @@ TITLE_FONT = {
   'color': '#1c4587'
 }
 
-MODEL_CAT = ['Regression', 'Classification', 'Clustering']
+MODEL_CAT = ('Regression', 'Classification', 'Clustering')
+
+VIEW_TYPES = ('relative', 'group')
 
 SECTION_FONT = {
   'color': '#1c4587', 

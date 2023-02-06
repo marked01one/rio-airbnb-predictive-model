@@ -3,18 +3,75 @@ from dash import html, dcc, Input, Output
 import plotly.express as px 
 import pandas as pd
 from constants import *
-from components.charts import overview
+from components.charts import overview, categories_pie
 
 dash.register_page(__name__, path='/literature/models')
 
 
 df_freq = pd.read_csv('./figures/lit_overview_frequency.csv')
 df_impact = pd.read_csv('./figures/lit_overview_impact.csv')
-num_of_articles = len(df_freq.columns) - 4
 
+
+# ! ************ Callback functions for models overview bar charts ************
+
+@dash.callback(Output("model_overview_freq", "figure"), Input("model_view_type_freq", "value"))
+def overview_types(view_types: str):
+  '''Callback function for "model overview (frequency)" bar chart
+  
+  ### Input:
+  - `model_type: value`: View types available for choosing
+  
+  ### Output:
+  - `overview_freq: figure`: A bar chart of all models' frequency
+  '''
+  return overview(
+    df_filtered=df_freq[df_freq['Category'] == 'Models'],
+    height=600,
+    title='Most popular models (frequency)',
+    labels={
+      'Index': 'Models',
+      'Total': 'Number of articles',
+      'Subcategory': 'Category'
+    },
+    barmode=view_types
+  )  
+
+
+@dash.callback(Output("model_overview_impact", "figure"), Input("model_view_type_impact", "value"))
+def overview_types(view_types: str):
+  '''Callback function for "model overview (frequency)" bar chart
+  
+  ### Input:
+  - `model_type: value`: View types available for choosing
+  
+  ### Output:
+  - `overview_freq: figure`: A bar chart of all models' frequency
+  '''
+  return overview(
+    df_filtered=df_freq[df_freq['Category'] == 'Models'],
+    height=600,
+    title='Most popular models (weighted by impact)',
+    labels={
+      'Index': 'Models',
+      'Total': 'Impact score',
+      'Subcategory': 'Category'
+    },
+    barmode=view_types
+  )
+
+
+# ! ************ Callback functions for model influence pie charts ************
 
 @dash.callback(Output("category_freq", "figure"), Input("model_freq", "value"))
 def category_types_pie(model_types: str):
+  '''Callback function for "model influence per type (frequency)" pie chart
+  
+  ### Input:
+  - `model_type: value`: All model types available for choosing (Regression, Classification, Clustering)
+  
+  ### Output:
+  - `category_freq: figure`: A figure of models within each type and their relative influence 
+  '''
   df_model_type = df_freq[df_freq['Subcategory'] == model_types]
   fig_model_type = px.pie(df_model_type, values='Total', names='Index',
                           title='Frequency')
@@ -24,6 +81,14 @@ def category_types_pie(model_types: str):
 
 @dash.callback(Output("category_impact", "figure"), Input("model_impact", "value"))
 def category_types_pie(model_types: str):
+  '''Callback function for "model influence per type (weighted by impact)" pie chart
+  
+  ### Input:
+  - `model_type: value`: All model types available for choosing (Regression, Classification, Clustering)
+  
+  ### Output:
+  - `category_freq: figure`: A figure of models within each type and their relative influence 
+  '''
   df_model_type = df_impact[df_impact['Subcategory'] == model_types]
   fig_model_type = px.pie(df_model_type, values='Total', names='Index',
                           title='Impact')
@@ -31,34 +96,7 @@ def category_types_pie(model_types: str):
   return fig_model_type
 
 
-def categories_pie(df: pd.DataFrame, title: str):
-  # Get total lists for each model category
-  totals_lists = [
-    df[df['Subcategory'] == model]['Total'].to_list()
-    for model in MODEL_CAT
-  ]
-  
-  # Convert all arrays in `totals_lists` with actual total
-  for i in range(3):
-    cat_sum = 0
-    for tot in totals_lists[i]:
-      cat_sum += int(tot)
-    
-    totals_lists[i] = cat_sum  
-  
-  # Create totals DataFrame
-  df_totals = pd.DataFrame({'Category': MODEL_CAT, 'Total': totals_lists})
-  fig = px.pie(
-    df_totals, values='Total', names='Category',
-    title=title
-  )
-  fig.update_layout(title_font=TITLE_FONT)
-  
-  
-  
-  return fig
-
-
+# ! ************************ Models page layout ************************
 
 layout = html.Div(
   className='container',
@@ -69,45 +107,50 @@ layout = html.Div(
       children=[
         html.H1(children='Literature Analysis - Models'),
         html.Div(children='''
-            This page includes visualizations about all models mentioned in papers that we have reviewed
-        ''')
+          Visualizations involving all machine learning models mentioned used in the reviewed literature
+        ''',
+          className="my-3"
+        )
       ]
     ),
+    
+    # Overview
     html.H2(
-      "Overview:",
+      "Overview",
       style=SECTION_FONT
     ),
-    dcc.Graph(
-      id='model-overview1',
-      figure=overview(
-        df_filtered=df_freq[df_freq['Category'] == 'Models'],
-        height=800,
-        title='Most popular models (frequency)',
-        labels={
-          'Index': 'Models',
-          'Total': 'Number of articles',
-          'Subcategory': 'Category'
-        }
-      )
-    ),
-    dcc.Graph(
-      id='model-overview2',
-      figure=overview(
-        df_filtered=df_impact[df_impact['Category'] == 'Models'],
-        height=800,
-        title='Most popular models (weighted by impact)',
-        labels={
-          'Index': 'Models',
-          'Total': 'Number of articles',
-          'Subcategory': 'Category'
-        }
-      )
-    ),
+    html.Div([
+      dcc.Graph(id="model_overview_freq"),
+      html.Div([
+        html.P("View Options:"),
+        dcc.Dropdown(
+          id="model_view_type_freq",
+          options=VIEW_TYPES,
+          value='relative', 
+          clearable=False
+        )
+      ], className='mx-5 px-5')
+    ], className='mb-5 pb-5'),
+    html.Div([
+      dcc.Graph(id="model_overview_impact"),
+      html.Div([
+        html.P("View Options:"),
+        dcc.Dropdown(
+          id="model_view_type_impact",
+          options=VIEW_TYPES,
+          value='relative', 
+          clearable=False
+        )
+      ], className='mx-5 px-5')
+    ], className='mb-5 pb-5'),
+
+
+    # Influence of each model type
     html.Div(
       className='row',
       children=[
         html.H2(
-          "Part 1 - Influence within each model type",
+          "Influence of each model type",
           style=SECTION_FONT
         ),
         html.Div(
@@ -124,11 +167,14 @@ layout = html.Div(
         ),
       ]
     ),
+    
+    
+    # Influence of each model per type
     html.Div(
       className='row',
       children=[
         html.H2(
-          "Part 2 - Influence within each model type",
+          "Influence of each model per type",
           style=SECTION_FONT
         ),
         html.Div(

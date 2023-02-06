@@ -1,5 +1,4 @@
 import pandas as pd
-from definitions import ROOT_DIR
 
 
 class DataFrameBank:

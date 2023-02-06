@@ -20,9 +20,8 @@ layout = html.Div(
       className='text-center',
       children=[
         html.H1(children='Overview'),
-        html.Div(
-          children='''
-            A quick overview of the most popular features, models, and data mining techniques/algorithms
+        html.Div(children='''
+          A quick overview of the most popular features, models, and data mining techniques/algorithms
         ''',
           className="my-3"
         )
@@ -35,7 +34,7 @@ layout = html.Div(
       figure=overview(
         df_filtered=df[df['Category'] == 'Features'], 
         height=1500, 
-        title='Most popular features (descending order)',
+        title='Most popular Airbnb features',
         labels={
           'Index': 'Airbnb Features',
           'Total': 'Number of articles',
@@ -47,8 +46,8 @@ layout = html.Div(
       id='overview2',
       figure=overview(
         df_filtered=df[df['Category'] == 'Models'],
-        height=800,
-        title='Most popular models (descending order)',
+        height=600,
+        title='Most popular machine learning models',
         labels={
           'Index': 'Models',
           'Total': 'Number of articles',
@@ -59,11 +58,11 @@ layout = html.Div(
     dcc.Graph(
       id='overview3',
       figure=overview(
-        df_filtered=df[df['Category'] == 'Data Mining'],
-        height=600,
-        title="Most popular data mining libraries/algorithms",
+        df_filtered=df[df['Category'] == 'Text Mining'],
+        height=500,
+        title="Most popular text mining libraries/algorithms",
         labels={
-          'Index': 'Data Mining Libraries/Algorithms',
+          'Index': 'Text Mining Libraries/Algorithms',
           'Total': 'Number of articles',
           'Subcategory': 'Category'
         }
