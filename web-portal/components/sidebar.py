@@ -73,7 +73,7 @@ class Sidebar:
                   html.Div(
                     className='col-6 col-lg-12',
                     children=[
-                      html.P('Dataset (in progress)', className='bg-light text-black display-block overflow-auto mt-5 px-2'),
+                      html.P('Dataset (in progress)', className='bg-light text-black display-block overflow-auto mt-2 px-2'),
                       html.Div(
                         className='dataset-content',
                         children=[
