@@ -45,26 +45,9 @@ C:\...\rio-airbnb-predictive-model> pip install -r requirements.txt
   <img src="./web-portal/assets/home_page.png" width="75%"/>
 </div>
 
-This a web portal created to serve this project, either to showcase exploratory data analysis, model results, or as interactive demos of the model itself. Below are documentation about each part of the web portal:
+This a web portal created to serve this project by showcasing exploratory data analysis, model results, and interactive demos of the model itself. 
 
-1. Literature Analysis
-   * Web portal designed to showcase results of our analysis of related literature, including various papers about Airbnb price predicting models and sentiment analysis techniques.
-   * Include four sections: Overview, Features, Models, and Other
-
-### Run the Web Portal
-* To access the web portal locally using this repository, run these commands in the root directory:
-```bash
-cd literature-web-portal
-python app.py
-```
-* After the commands run, this prompt should appear:
-```
-Dash is running on http://127.0.0.1:8050/
-
- * Serving Flask app 'app'
- * Debug mode: on
-```
-* Navigate to the given URL address on your browser to access the web portal
+The repository for the web-portal lies in a separate repository. You can check them here: [RIO Airbnb Web Portal](https://github.com/marked01one/rio-airbnb-web-portal)
 
 <h2 align='center' id="notebooks"> Jupyter Notebooks </h2>
 
