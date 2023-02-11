@@ -40,14 +40,9 @@ C:\...\rio-airbnb-predictive-model> pip install -r requirements.txt
 
 <h2 align='center' id="web-portal"> Web Portal </h2>
 
-
-<div align="center">
-  <img src="./web-portal/assets/home_page.png" width="75%"/>
-</div>
-
 This a web portal created to serve this project by showcasing exploratory data analysis, model results, and interactive demos of the model itself. 
 
-The repository for the web-portal lies in a separate repository. You can check them here: [RIO Airbnb Web Portal](https://github.com/marked01one/rio-airbnb-web-portal)
+The repository for the web portal has been migrated a separate repository. You can check them here: [RIO Airbnb Web Portal](https://github.com/marked01one/rio-airbnb-web-portal)
 
 <h2 align='center' id="notebooks"> Jupyter Notebooks </h2>
 
