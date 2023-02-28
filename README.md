@@ -10,7 +10,7 @@
 
 <h2 align="center" id="summary"> Summary </h2>
 
-This repository contains Jupyter Python and Python code belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
+This repository contains Jupyter Notebooks and Python code belonging to Cal Poly Pomona's _Research through Inclusive Opportunities_ **(RIO)** research program.
 For more information about the program and its associated projects: [Research through Inclusive Opportunities](https://www.cpp.edu/our-cpp/students/rio/index.shtml)
 
 The repository is specifically created to support the Airbnb predictive modeling project from Dr. Sonya Zhang and the Computer Information Systems department. 
@@ -40,9 +40,9 @@ C:\...\rio-airbnb-predictive-model> pip install -r requirements.txt
 
 <h2 align='center' id="web-portal"> Web Portal </h2>
 
-This a web portal created to serve this project by showcasing exploratory data analysis, model results, and interactive demos of the model itself. 
+This is a web portal created to serve this project by showcasing exploratory data analysis, model results, and interactive demos of the model itself. 
 
-The repository for the web portal has been migrated a separate repository. You can check them here: [RIO Airbnb Web Portal](https://github.com/marked01one/rio-airbnb-web-portal)
+The repository for the web portal itself has been migrated a separate repository. You can check them here: [RIO Airbnb Web Portal](https://github.com/marked01one/rio-airbnb-web-portal)
 
 <h2 align='center' id="notebooks"> Jupyter Notebooks </h2>
 

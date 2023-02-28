@@ -33,11 +33,9 @@ def bath_clean(string: str) -> dict:
     }
 
 def all_amenities(df_col: pd.DataFrame) -> list[str]:
-    out = []
+    out = set()
     for list in df_col.to_list():
-        for item in list:
-            if item not in out:
-                out.append(item)
+        out.append(list)
     return out
 
 def amenities_clean(string: str) -> list[str]:
@@ -64,10 +62,8 @@ def amenities_clean(string: str) -> list[str]:
                 break    
     return new_list
 
-def get_zip_code(lat: float, long: float) -> int:
-    location = geolocator.reverse(f"{lat}, {long}").address # type: ignore
-    zip_code = re.findall("[0-9]{5}", location)
+def get_zip_code(coordinates) -> int:
     try:
-        return int(zip_code[-1])
+      return re.findall("[0-9]{5}", geolocator.reverse(coordinates).address)[-1]
     except IndexError:
-        return 0
+      return 0
