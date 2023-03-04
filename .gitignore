@@ -2,5 +2,6 @@
 # use the `dataset.zip` file instead 
 **/dataset
 /scripts
-**/.venv
 **/web-portal
+**/env
+notes.md

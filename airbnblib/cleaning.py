@@ -47,15 +47,25 @@ def amenities_clean(string: str) -> list[str]:
     """
     amenities_check = [['TV'], ['Free','Parking'], ['Grill'], ['WiFi']]
     list_str = string.lstrip('["').rstrip('"]').split('", "')
-    new_list = [
-        re.sub('[0-9]{4}', '', item.replace('\\u', '')) \
-        .encode('utf8').decode('ascii', errors='ignore')
-        for item in list_str
-    ]
+    # new_list = [
+    #     re.sub('[0-9]{4}', '', item.replace('\\u', '')) \
+    #     .encode('utf8').decode('ascii', errors='ignore')
+    #     for item in list_str
+    # ]
+    new_list = []
     for item in new_list:
+        new_item = re.sub('[0-9]{4}', '', item.replace('\\u', '')).encode('utf8').decode('ascii', errors='ignore')
+
+          
         for check in amenities_check:
             check_str = " ".join(check)
-            if all(word.lower() in item.lower() for word in check) and (check_str.lower() != item.lower()):
+            
+            if check_str.lower() in new_item.lower() and check_str not in new_list:
+                new_list.append(check_str)
+                break
+            
+            
+            if all(word.lower() in new_item.lower() for word in check) and (check_str.lower() != new_item.lower()):
                 new_list.remove(item)
                 if check_str not in new_list:
                     new_list.append(check_str)
