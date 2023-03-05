@@ -5,6 +5,8 @@
       "crossorigin",
       "geolocator",
       "iterrows",
+      "Lemmatizer",
+      "nltk",
       "Nominatim",
       "titlefont",
       "xaxes",
